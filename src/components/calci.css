@@ -1,0 +1,40 @@
+.a1{
+  background-color: #e1f5fe;
+  width: auto;
+  height: 300px;
+
+}
+.a2{
+  background-color: #2196f3;
+  width: 70px;
+  margin: 3px;
+}
+.a3{
+  padding-top: 25px;
+  height:200px;
+  width: 304px;
+
+}
+.a4{
+  background-color: #ffebee;
+  margin-bottom: 10px;
+  height: 80px;
+}
+.a5{
+  background-color: #212121;
+  color: white;
+  margin: 10px;
+  font-weight: bold;
+}
+.a6{
+  background-color: white;
+  color: black;
+  margin: 10px;
+  font-weight: bold;
+}
+.a7{
+  background-color: #d32f2f;
+  margin: 10px;
+  font-weight: bold;
+  color: white;
+}
