@@ -17,6 +17,8 @@ class Calsi extends Component {
     DARK: false,
     LIGHT: true,
 
+    Scientific: false
+
   }
 
   addToInput = val => {
@@ -36,25 +38,25 @@ clearInput = () => {
 
 add = () => {
   this.state.prevNumber = this.state.input;
-  this.setState({ input: "" });
+  this.setState({ input: `+` });
   this.state.operator = "plus";
 };
 
 subtract = () => {
   this.state.prevNumber = this.state.input;
-  this.setState({ input: "" });
+  this.setState({ input: "-" });
   this.state.operator = "subtract";
 };
 
 multiply = () => {
   this.state.prevNumber = this.state.input;
-  this.setState({ input: "" });
+  this.setState({ input: "*" });
   this.state.operator = "multiply";
 };
 
 divide = () => {
   this.state.prevNumber = this.state.input;
-  this.setState({ input: "" });
+  this.setState({ input: "/" });
   this.state.operator = "divide";
 };
 
@@ -82,7 +84,11 @@ evaluate = () => {
 
 
 
+
+
+
   render(){
+console.log(this.state.Scientific)
 if(this.state.LIGHT){
 
   return <div className=' a1'>
@@ -92,17 +98,23 @@ if(this.state.LIGHT){
                   </Fade>
 
                   <Fade bottom>
-                     <div className='container'>
+                     <div className='container text-center'>
 
                               <Fade bottom>
-                                 <button className='btn float-left a6' onClick={() => this.setState({ DARK: false, LIGHT: true})}>Light Theme</button>
+                                 <button className='btn a6' onClick={() => this.setState({ DARK: false, LIGHT: true})}>Light Theme</button>
                               </Fade>
                               <Fade bottom>
                                  <button className='btn a5' onClick={() => this.setState({ DARK: true, LIGHT: false})}>Dark Theme</button>
+                                 <div className=' container a11  text-center'>
+                                    <button className='  btn a7' onClick = {() => this.setState({ Scientific: true })}>Scientific Mode</button>
+                                    <button className='a7'  >+/-</button>
+                                    <button className='a7'  >x2</button>
+                                    <button className='a7'  >√x</button>
+
+                                 </div>
                               </Fade>
-                              <Fade bottom>
-                                 <button className='float-right btn a7'>Scientific Mode</button>
-                              </Fade>
+
+
 
                      </div>
                   </Fade>
@@ -163,18 +175,24 @@ if(this.state.LIGHT){
 
 
           <Fade bottom>
-                <div className='container'>
+                <div className='container text-center'>
                       <Fade bottom>
-                        <button className='float-left btn a8' onClick={() => this.setState({ DARK: false, LIGHT: true})}>Light Theme</button>
-                      </Fade>
+                        <button className='btn a8' onClick={() => this.setState({ DARK: false, LIGHT: true})}>Light Theme</button>
 
-                      <Fade bottom>
                         <button className='btn a9' onClick={() => this.setState({ DARK: true, LIGHT: false})}>Dark Theme</button>
+                        <Fade bottom>
+
+                          <div className='container a11  text-center'>
+                          <button className='float-right btn a7' onClick = {() => this.setState({ Scientific: true })}>Scientific Mode</button>
+                          <button className='  a7 a12'  >+/-</button>
+                          <button className='   a7 a12'  >x2</button>
+                          <button className='   a7 a12'  >√x</button>
+                          </div>
+
+                        </Fade>
                       </Fade>
 
-                      <Fade bottom>
-                        <button className='float-right btn a7'  >Scientific Mode</button>
-                      </Fade>
+
                 </div>
         </Fade>
 <Fade bottom>

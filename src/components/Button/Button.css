@@ -7,11 +7,11 @@
   align-items: center;
   font-weight: bold;
   font-size: 1.4em;
-  background-color: #2196f3;
-  color: white;
+  background-color: #f0f0f0;
+  color: black;
 
 }
 .operator {
-  background-color: #3849aa;
-  color: #fff;
+  background-color: #f0f0f0;
+  color: black;
 }
