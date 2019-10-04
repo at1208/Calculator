@@ -1,31 +1,86 @@
 import React, { Component }from 'react';
 import './calci.css';
 import Fade from 'react-reveal/Fade';
+import Button from "../Button/Button";
+import Input from "../Input/Input";
+import ClearButton from "../ClearButton/ClearButton";
+
 
 class Calsi extends Component {
+
   state = {
+    input: '0',
+    operator: '',
+    prevNumber: '',
+    currNumber: '',
 
     DARK: false,
     LIGHT: true,
 
   }
 
-plusOperation = () => {
- 
-  return
-}
+  addToInput = val => {
+    this.setState({ input: this.state.input + val });
+  };
 
-minusOperation = () => {
-  return
-}
+  addZeroToInput = val => {
 
-multiplyOperation = () => {
-  return
-}
+  if (this.state.input !== "") {
+    this.setState({ input: this.state.input + val });
+  }
+};
 
-divideOperation = () => {
-  return
-}
+clearInput = () => {
+  this.setState({ input: "" });
+};
+
+add = () => {
+  this.state.prevNumber = this.state.input;
+  this.setState({ input: "" });
+  this.state.operator = "plus";
+};
+
+subtract = () => {
+  this.state.prevNumber = this.state.input;
+  this.setState({ input: "" });
+  this.state.operator = "subtract";
+};
+
+multiply = () => {
+  this.state.prevNumber = this.state.input;
+  this.setState({ input: "" });
+  this.state.operator = "multiply";
+};
+
+divide = () => {
+  this.state.prevNumber = this.state.input;
+  this.setState({ input: "" });
+  this.state.operator = "divide";
+};
+
+evaluate = () => {
+  this.state.currNumber = this.state.input;
+
+  if (this.state.operator == "plus") {
+    this.setState({
+      input: parseInt(this.state.prevNumber) + parseInt(this.state.currNumber)
+    });
+  } else if (this.state.operator == "subtract") {
+    this.setState({
+      input:  parseInt(this.state.prevNumber) - parseInt(this.state.currNumber)
+    });
+  } else if (this.state.operator == "multiply") {
+    this.setState({
+      input:  parseInt(this.state.prevNumber) * parseInt(this.state.currNumber)
+    });
+  } else if (this.state.operator == "divide") {
+    this.setState({
+      input: parseInt(this.state.prevNumber) / parseInt(this.state.currNumber)
+    });
+  }
+};
+
+
 
   render(){
 if(this.state.LIGHT){
@@ -55,42 +110,44 @@ if(this.state.LIGHT){
                    <div className='a3 container'>
                               <Fade bottom>
                                  <div className='a4 container shadow text-center'>
+
+                              <Input>{this.state.input}</Input>
                                  </div>
                               </Fade>
 
                               <Fade bottom>
                                  <div className='row'>
-                                  <button className='a2 text-center btn ' >1</button>
-                                  <button className='a2 text-center btn '  >2</button>
-                                  <button className='a2 text-center btn '  >3</button>
-                                  <button className='a2 text-center btn ' >+</button>
+                                  <Button className='a2 text-center btn ' handleClick={this.addToInput}>1</Button>
+                                  <Button className='a2 text-center btn ' handleClick={this.addToInput} >2</Button>
+                                  <Button className='a2 text-center btn ' handleClick={this.addToInput} >3</Button>
+                                  <Button className='a2 text-center btn ' handleClick={this.add}>+</Button>
                                  </div>
                              </Fade>
 
                            <Fade bottom>
                                <div className='row'>
-                                  <button className='a2 text-center btn '  >4</button>
-                                  <button className='a2 text-center btn '  >5</button>
-                                  <button className='a2 text-center btn '  >6</button>
-                                  <button className='a2 text-center btn '  >-</button>
+                                  <Button className='a2 text-center btn ' handleClick={this.addToInput} >4</Button>
+                                  <Button className='a2 text-center btn ' handleClick={this.addToInput} >5</Button>
+                                  <Button className='a2 text-center btn ' handleClick={this.addToInput} >6</Button>
+                                  <Button className='a2 text-center btn ' handleClick={this.subtract} >-</Button>
                                </div>
                            </Fade>
 
                            <Fade bottom>
                               <div className='row'>
-                                <button className='a2 text-center btn '  >7</button>
-                                <button className='a2 text-center btn '  >8</button>
-                                <button className='a2 text-center btn '  >9</button>
-                                <button className='a2 text-center btn '>*</button>
+                                <Button className='a2 text-center btn '  handleClick={this.addToInput}>7</Button>
+                                <Button className='a2 text-center btn '  handleClick={this.addToInput}>8</Button>
+                                <Button className='a2 text-center btn '  handleClick={this.addToInput}>9</Button>
+                                <Button className='a2 text-center btn '  handleClick={this.multiply}>*</Button>
                               </div>
                            </Fade>
 
                           <Fade bottom>
                             <div className='row'>
-                               <button className='a2 text-center btn '>Clear</button>
-                               <button className='a2 text-center btn ' >0</button>
-                               <button className='a2 text-center btn '>=</button>
-                               <button className='a2 text-center btn '>/</button>
+                               <ClearButton className='a2 text-center btn ' handleClear={this.clearInput}>Clear</ClearButton>
+                               <Button className='a2 text-center btn ' handleClick={this.addZeroToInput}>0</Button>
+                               <Button className='a2 text-center btn ' handleClick={this.evaluate}>=</Button>
+                               <Button className='a2 text-center btn ' handleClick={this.divide}>/</Button>
                             </div>
                           </Fade>
                    </div>
@@ -120,47 +177,47 @@ if(this.state.LIGHT){
                       </Fade>
                 </div>
         </Fade>
-
 <Fade bottom>
-             <div className='a3 container-fluid'>
+             <div className='a3 container'>
                    <Fade bottom>
                      <div className='a4 container shadow text-center'>
+                     <Input>{this.state.input}</Input>
                       </div>
                    </Fade>
 
                     <Fade bottom>
                        <div className='row'>
-                        <button className='a2 text-center btn '  >1</button>
-                        <button className='a2 text-center btn '  >2</button>
-                        <button className='a2 text-center btn '  >3</button>
-                        <button className='a2 text-center btn '  >+</button>
+                        <Button className='a2 text-center  ' handleClick={this.addToInput} >1</Button>
+                        <Button className='a2 text-center  ' handleClick={this.addToInput} >2</Button>
+                        <Button className='a2 text-center '  handleClick={this.addToInput}>3</Button>
+                        <Button className='a2 text-center '  handleClick={this.add}>+</Button>
                        </div>
                    </Fade>
 
              <Fade bottom>
                  <div className='row'>
-                  <button className='a2 text-center btn '  >4</button>
-                  <button className='a2 text-center btn '  >5</button>
-                  <button className='a2 text-center btn '  >6</button>
-                  <button className='a2 text-center btn '  >-</button>
+                  <Button className='a2 text-center ' handleClick={this.addToInput} >4</Button>
+                  <Button className='a2 text-center  ' handleClick={this.addToInput} >5</Button>
+                  <Button className='a2 text-center '  handleClick={this.addToInput}>6</Button>
+                  <Button className='a2 text-center '  handleClick={this.subtract}>-</Button>
                  </div>
              </Fade>
 
               <Fade bottom>
                  <div className='row'>
-                  <button className='a2 text-center btn '  >7</button>
-                  <button className='a2 text-center btn '  >8</button>
-                  <button className='a2 text-center btn '  >9</button>
-                  <button className='a2 text-center btn '>*</button>
+                  <Button className='a2 text-center '  handleClick={this.addToInput}>7</Button>
+                  <Button className='a2 text-center ' handleClick={this.addToInput} >8</Button>
+                  <Button className='a2 text-center  ' handleClick={this.addToInput} >9</Button>
+                  <Button className='a2 text-center  ' handleClick={this.multiply}>*</Button>
                   </div>
                </Fade>
 
                  <Fade bottom>
                   <div className='row'>
-                   <button className='a2 text-center btn '>Clear</button>
-                   <button className='a2 text-center btn ' >0</button>
-                   <button className='a2 text-center btn '>=</button>
-                   <button className='a2 text-center btn '>/</button>
+                   <ClearButton className='a2 text-center  ' handleClear={this.clearInput}>Clear</ClearButton>
+                   <Button className='a2 text-center  ' handleClick={this.addZeroToInput}>0</Button>
+                   <Button className='a2 text-center  ' handleClick={this.evaluate}>=</Button>
+                   <Button className='a2 text-center  ' handleClick={this.divide}>/</Button>
                   </div>
                  </Fade>
 

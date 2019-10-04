@@ -1,5 +1,5 @@
 import React from 'react';
-import Calci from './calculator/calci'
+import Calci from './Calculator/calci'
 
 const App = () => {
   return <>
