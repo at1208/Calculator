@@ -159,7 +159,7 @@ if(this.state.LIGHT){
                                <ClearButton className='a2 text-center btn ' handleClear={this.clearInput}>Clear</ClearButton>
                                <Button className='a2 text-center btn ' handleClick={this.addZeroToInput}>0</Button>
                                <Button className='a2 text-center btn ' handleClick={this.evaluate}>=</Button>
-                               <Button className='a2 text-center btn ' handleClick={this.divide}>/</Button>
+                               <Button className='a2  text-center btn ' handleClick={this.divide}>/</Button>
                             </div>
                           </Fade>
                    </div>
